@@ -46,15 +46,21 @@ const searchFood =async() => {
       // console.log(mealId);
       const url=`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`;
 
+      try{
+
       const res = await fetch(url);
       const data =await res.json();
       displayMealDetail(data.meals[0]);
+      }
+      catch(error){
+        console.log(error);
+      }
     //   fetch(url)
     //   .then(res => res.json())
     //   .then(data => displayMealDetail(data.meals[0]));
     }
     
-    const displayMealDatail = meal => {
+    const displayMealDetail = meal => {
       console.log(meal);
       const mealDetails = document.getElementById('meal-details');
       mealDetails.textContent = '';
